@@ -10,10 +10,10 @@ namespace EasyAuthPOC.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.IDToken = Request.Headers["X-MS-TOKEN-AAD-ID-TOKEN"];
-            ViewBag.AccessToken = Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"];
-            ViewBag.ExpiresOn = Request.Headers["X-MS-TOKEN-AAD-EXPIRES-ON"];
-            ViewBag.RefreshToken = Request.Headers["X-MS-TOKEN-AAD-REFRESH-TOKEN"];
+            ViewBag.IDToken = Request.Headers["X-MS-TOKEN-AAD-ID-TOKEN"] ?? "No token exist";
+            ViewBag.AccessToken = Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"] ?? "No access token exist";
+            ViewBag.ExpiresOn = Request.Headers["X-MS-TOKEN-AAD-EXPIRES-ON"] ?? "No expiration token exist";
+            ViewBag.RefreshToken = Request.Headers["X-MS-TOKEN-AAD-REFRESH-TOKEN"] ?? "No refresh token exist";
 
             return View();
         }
