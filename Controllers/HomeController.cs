@@ -10,7 +10,11 @@ namespace EasyAuthPOC.Controllers
     {
         public ActionResult Index()
         {
-            var user = User.Identity.Name;
+            ViewBag.IDToken = Request.Headers["X-MS-TOKEN-AAD-ID-TOKEN"];
+            ViewBag.AccessToken = Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"];
+            ViewBag.ExpiresOn = Request.Headers["X-MS-TOKEN-AAD-EXPIRES-ON"];
+            ViewBag.RefreshToken = Request.Headers["X-MS-TOKEN-AAD-REFRESH-TOKEN"];
+
             return View();
         }
 
