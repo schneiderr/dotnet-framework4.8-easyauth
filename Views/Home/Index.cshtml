@@ -1,7 +1,11 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<style>
+    .text-wrap{
+        word-wrap: break-word
+    }
+</style>
 <div class="jumbotron">
     <h1>@(User.Identity.Name)</h1>
     @* <p class="lead">ID Token : </p>
@@ -12,14 +16,14 @@
 <div class="row">
     <div class="col-md-4">
         <h2>ID Token</h2>
-        <p>@(ViewBag.IDToken)</p>
+        <p class="text-wrap">@(ViewBag.IDToken)</p>
     </div>
     <div class="col-md-4">
         <h2>Access Token</h2>
-        <p>@(ViewBag.AccessToken)</p>
+        <p class="text-wrap">@(ViewBag.AccessToken)</p>
     </div>
         <div class="col-md-4">
         <h2>Refresh Token</h2>
-        <p>@(ViewBag.RefreshToken)</p>
+        <p class="text-wrap">@(ViewBag.RefreshToken)</p>
     </div>
 </div>
