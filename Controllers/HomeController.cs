@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace EasyAuthPOC.Controllers
 {
@@ -14,6 +15,16 @@ namespace EasyAuthPOC.Controllers
             ViewBag.AccessToken = Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"] ?? "No access token exist";
             ViewBag.ExpiresOn = Request.Headers["X-MS-TOKEN-AAD-EXPIRES-ON"] ?? "No expiration token exist";
             ViewBag.RefreshToken = Request.Headers["X-MS-TOKEN-AAD-REFRESH-TOKEN"] ?? "No refresh token exist";
+
+            var token = Request.Headers["X-MS-TOKEN-AAD-ID-TOKEN"];
+            if (token != null)
+            {
+                var handler = new JwtSecurityTokenHandler();
+                var jsonToken = handler.ReadToken(token);
+                var tokenS = jsonToken as JwtSecurityToken;
+
+                ViewBag.SecurityToken = tokenS;
+            }
 
             return View();
         }

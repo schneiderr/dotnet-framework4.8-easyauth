@@ -13,6 +13,14 @@
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
+
+<div class="row">
+    <div class="col-md-12">
+        <input id="security-token-json" type="hidden" value="@(ViewBag.SecurityToken ?? '{}')" />
+        <pre id="json-display"></pre>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-4">
         <h2>ID Token</h2>
@@ -27,3 +35,31 @@
         <p class="text-wrap">@(ViewBag.RefreshToken)</p>
     </div>
 </div>
+
+
+@section Scripts {
+    
+    <script>
+
+        function getJson() {
+            try {
+                return JSON.parse($('#security-token-json').val());
+            } catch (ex) {
+                alert('Wrong JSON Format: ' + ex);
+            }
+        }
+
+        $(function () {
+           
+
+            // initialize
+            var editor = new JsonEditor('#json-display', getJson());
+
+            // enable translate button
+            $('#translate').on('click', function () {
+                editor.load(getJson());
+            });
+        })
+    </script>
+    
+}
