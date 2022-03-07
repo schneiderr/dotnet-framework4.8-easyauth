@@ -30,7 +30,7 @@ namespace EasyAuthPOC.Controllers
                 {
                     var azureCredential = new DefaultAzureCredential();
                     var context = new TokenRequestContext(
-                        new string[] { "https://rfp-easyauth-webapi-poc.azurewebsites.net/" });
+                        new string[] { "https://rfp-easyauth-webapp-poc.azurewebsites.net/" });
 
                     var token = await azureCredential.GetTokenAsync(context);
 
