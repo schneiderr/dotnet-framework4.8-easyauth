@@ -28,7 +28,7 @@ namespace EasyAuthPOC.Controllers
             {
                 if (auth == 1)
                 {
-                    var azureCredential = new DefaultAzureCredential();
+                    var azureCredential = new ManagedIdentityCredential();
                     var context = new TokenRequestContext(
                         new string[] { "https://rfp-easyauth-webapp-poc.azurewebsites.net/.default" });
 
@@ -55,7 +55,7 @@ namespace EasyAuthPOC.Controllers
         {
 
             var httpClient = new HttpClient();
-             var azureCredential = new DefaultAzureCredential();
+             var azureCredential = new ManagedIdentityCredential();
             var context = new TokenRequestContext(
                 new string[] { "https://rfp-easyauth-webapi-poc.azurewebsites.net/" });
 
