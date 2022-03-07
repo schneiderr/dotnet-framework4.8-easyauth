@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 <style>
-    .text-wrap{
+    .text-wrap {
         word-wrap: break-word
     }
 </style>
@@ -10,8 +10,10 @@
     <h1>@(User.Identity.Name)</h1>
     @* <p class="lead">ID Token : </p>
         <p class="lead">Access Token : @(ViewBag.IDToken)</p> *@
-    <p class="lead">A proof on concept using the Azure App Service Authentication, refered to as Easy Auth. Easy Auth works as an IIS module that executes before sending the request onto the web application. When no token exist, the module will force authentication, upon success, 
-    the module will populate the <code>User.Identity.Name</code> with the users name. In addition, it will populate four headers on each request passing in the <mark>ID Token</mark>, <mark>Access Token</mark>, <mark>Expiration Date</mark> and <mark>Refresh Token</mark> </p>
+    <p class="lead">
+        A proof on concept using the Azure App Service Authentication, refered to as Easy Auth. Easy Auth works as an IIS module that executes before sending the request onto the web application. When no token exist, the module will force authentication, upon success,
+        the module will populate the <code>User.Identity.Name</code> with the users name. In addition, it will populate four headers on each request passing in the <mark>ID Token</mark>, <mark>Access Token</mark>, <mark>Expiration Date</mark> and <mark>Refresh Token</mark>
+    </p>
 
     <p>The four populated request headers</p>
     <dl class="form-horizontal">
@@ -20,6 +22,15 @@
         <dt><code>X-MS-TOKEN-AAD-EXPIRES-ON</code></dt>
         <dt><code>X-MS-TOKEN-AAD-REFRESH-TOKEN</code></dt>
     </dl>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p class="lead">ID Token Payload</p>
+            <input id="security-token-json" type="hidden" value="@(ViewBag.SecurityToken)" />
+            <pre id="json-display"></pre>
+        </div>
+    </div>
+
     <p><a href="https://docs.microsoft.com/en-us/azure/app-service/overview-authentication-authorization" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
@@ -41,7 +52,7 @@
         <h2>Access Token</h2>
         <p class="text-wrap">@(ViewBag.AccessToken)</p>
     </div>
-        <div class="col-md-4">
+    <div class="col-md-4">
         <h2>Refresh Token</h2>
         <p class="text-wrap">@(ViewBag.RefreshToken)</p>
     </div>
@@ -49,7 +60,7 @@
 
 
 @section Scripts {
-    
+
     <script>
 
         function getJson() {
@@ -61,11 +72,11 @@
         }
 
         $(function () {
-           
+
             // initialize
             var editor = new JsonEditor('#json-display', getJson());
             editor.load(getJson());
         })
     </script>
-    
+
 }
