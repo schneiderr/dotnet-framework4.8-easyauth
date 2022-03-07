@@ -23,7 +23,7 @@ namespace EasyAuthPOC.Controllers
                 var jsonToken = handler.ReadToken(token);
                 var tokenS = jsonToken as JwtSecurityToken;
 
-                ViewBag.SecurityToken = tokenS;
+                ViewBag.SecurityToken = tokenS.Payload;
             }
 
             return View();

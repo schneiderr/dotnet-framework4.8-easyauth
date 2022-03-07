@@ -15,6 +15,12 @@ namespace EasyAuthPOC.Controllers
     public class RFPController : Controller
     {
  
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public async Task<ActionResult> GetAsync(int auth = 1)
         {
 

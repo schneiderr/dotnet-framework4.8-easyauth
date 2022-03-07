@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    .text-wrap{
+        word-wrap: break-word
+    }
+</style>
+<div class="jumbotron">
+    <h1>Using Managed Identity</h1>
+    @*<p class="lead">ID Token : </p>*@
+    <p class="lead">A proof on concept using the Azure System Managed Identity</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+      
+    </div>
+</div>
+
+
+
+@section Scripts {
+    
+    <script>
+
+        $(function () {
+           
+
+            $("#msIdentity-reqest-btn").click(function () {
+                $.get("demo_test.asp", function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+            });
+        })
+    </script>
+    
+}
