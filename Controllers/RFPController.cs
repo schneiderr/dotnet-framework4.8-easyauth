@@ -42,11 +42,11 @@ namespace EasyAuthPOC.Controllers
                 var result = await httpClient.GetStringAsync(
                     "https://rfp-easyauth-webapi-poc.azurewebsites.net/api/rfp");
 
-                return Json($"Call to 'API' succeeded. Response from 'Integration': {result}");
+                return Json($"Call to 'API' succeeded. Response from 'Integration': {result}", JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
-                return Json(ex.Message);
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
                 //return new HttpStatusCodeResult(500, $"Exception: {ex.Message}\n\nStack trace:\n{ex.StackTrace}");
             }
         }
@@ -63,7 +63,7 @@ namespace EasyAuthPOC.Controllers
 
             // Specify the access token in the Authorization header
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Token);           
-            return Json(token);
+            return Json(token, JsonRequestBehavior.AllowGet);
         }
     }
 }
