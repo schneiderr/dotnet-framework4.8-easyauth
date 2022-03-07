@@ -46,6 +46,7 @@ namespace EasyAuthPOC.Controllers
             }
             catch (Exception ex)
             {
+                return Json(ex.Message);
                 //return new HttpStatusCodeResult(500, $"Exception: {ex.Message}\n\nStack trace:\n{ex.StackTrace}");
             }
         }
