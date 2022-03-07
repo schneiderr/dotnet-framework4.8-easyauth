@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.Extensions.Logging;
 using Azure.Identity;
 using Azure.Core;
 using System.Threading.Tasks;
