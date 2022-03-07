@@ -14,8 +14,6 @@ namespace EasyAuthPOC.Controllers
 {
     public class RFPController : Controller
     {
- 
-
         public ActionResult Index()
         {
             return View();
@@ -32,7 +30,7 @@ namespace EasyAuthPOC.Controllers
                 {
                     var azureCredential = new DefaultAzureCredential();
                     var context = new TokenRequestContext(
-                        new string[] { "https://rfp-easyauth-webapi-poc.azurewebsites.net/.default" });
+                        new string[] { "https://rfp-easyauth-webapi-poc.azurewebsites.net/" });
 
                     var token = await azureCredential.GetTokenAsync(context);
 
@@ -48,8 +46,25 @@ namespace EasyAuthPOC.Controllers
             }
             catch (Exception ex)
             {
-                return new HttpStatusCodeResult(500, $"Exception: {ex.Message}\n\nStack trace:\n{ex.StackTrace}");
+                //return new HttpStatusCodeResult(500, $"Exception: {ex.Message}\n\nStack trace:\n{ex.StackTrace}");
             }
+        }
+
+        public async Task<ActionResult> Token()
+        {
+
+            var httpClient = new HttpClient();
+             var azureCredential = new DefaultAzureCredential();
+            var context = new TokenRequestContext(
+                new string[] { "https://rfp-easyauth-webapi-poc.azurewebsites.net/" });
+
+            var token = await azureCredential.GetTokenAsync(context);
+
+            // Specify the access token in the Authorization header
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Token);
+
+            
+            return Json(token);
         }
     }
 }
