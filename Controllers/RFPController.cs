@@ -59,7 +59,7 @@ namespace EasyAuthPOC.Controllers
             var context = new TokenRequestContext(
                 new string[] { "https://rfp-easyauth-webapi-poc.azurewebsites.net/" });
 
-            var token = await azureCredential.GetTokenAsync();
+            var token = await azureCredential.GetTokenAsync(context);
 
             // Specify the access token in the Authorization header
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Token);           
