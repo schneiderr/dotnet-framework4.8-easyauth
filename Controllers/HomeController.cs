@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IdentityModel.Tokens.Jwt;
+using Newtonsoft;
+using Newtonsoft.Json;
 
 namespace EasyAuthPOC.Controllers
 {
@@ -23,7 +25,7 @@ namespace EasyAuthPOC.Controllers
                 var jsonToken = handler.ReadToken(token);
                 var tokenS = jsonToken as JwtSecurityToken;
 
-                ViewBag.SecurityToken = tokenS.Payload;
+                ViewBag.SecurityToken = JsonConvert.SerializeObject(tokenS.Payload);
             }
 
             return View();

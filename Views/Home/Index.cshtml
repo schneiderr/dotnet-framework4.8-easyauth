@@ -9,8 +9,18 @@
 <div class="jumbotron">
     <h1>@(User.Identity.Name)</h1>
     @* <p class="lead">ID Token : </p>
-    <p class="lead">Access Token : @(ViewBag.IDToken)</p> *@
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <p class="lead">Access Token : @(ViewBag.IDToken)</p> *@
+    <p class="lead">A proof on concept using the Azure App Service Authentication, refered to as Easy Auth. Easy Auth works as an IIS module that executes before sending the request onto the web application. When no token exist, the module will force authentication, upon success, 
+    the module will populate the <code>User.Identity.Name</code> with the users name. In addition, it will populate four headers on each request passing in the <mark>ID Token</mark>, <mark>Access Token</mark>, <mark>Expiration Date</mark> and <mark>Refresh Token</mark> </p>
+
+    <p>The four populated request headers</p>
+    <dl class="form-horizontal">
+        <dt><code>X-MS-TOKEN-AAD-ID-TOKEN</code></dt>
+        <dt><code>X-MS-TOKEN-AAD-ACCESS-TOKEN</code></dt>
+        <dt><code>X-MS-TOKEN-AAD-EXPIRES-ON</code></dt>
+        <dt><code>X-MS-TOKEN-AAD-REFRESH-TOKEN</code></dt>
+    </dl>
+    <p><a href="https://docs.microsoft.com/en-us/azure/app-service/overview-authentication-authorization" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
 
