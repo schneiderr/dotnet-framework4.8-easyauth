@@ -71,10 +71,16 @@ namespace EasyAuthPOC.Controllers
 
             var httpClient = new HttpClient();
              var azureCredential = new ManagedIdentityCredential();
+              var context = new TokenRequestContext(
+                new string[] { "" });
+
+            var token = await azureCredential.GetTokenAsync(context);
+
+            //
            
             // Specify the access token in the Authorization header
             //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Token);           
-            return Json(azureCredential, JsonRequestBehavior.AllowGet);
+            return Json(token, JsonRequestBehavior.AllowGet);
         }
     }
 }
