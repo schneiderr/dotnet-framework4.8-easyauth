@@ -30,7 +30,7 @@ namespace EasyAuthPOC.Controllers
                 {
                     var azureCredential = new ManagedIdentityCredential();
                     var context = new TokenRequestContext(
-                        new string[] { "https://rfp-easyauth-webapp-poc.azurewebsites.net/.default" });
+                        new string[] { "api://e68d0fad-b6bb-4439-b58b-b3fb1c5c4aac" });
 
                     var token = await azureCredential.GetTokenAsync(context);
 
@@ -57,7 +57,7 @@ namespace EasyAuthPOC.Controllers
             var httpClient = new HttpClient();
              var azureCredential = new ManagedIdentityCredential();
             var context = new TokenRequestContext(
-                new string[] { "https://rfp-easyauth-webapi-poc.azurewebsites.net/" });
+                new string[] { "api://e68d0fad-b6bb-4439-b58b-b3fb1c5c4aac" });
 
             var token = await azureCredential.GetTokenAsync(context);
 
